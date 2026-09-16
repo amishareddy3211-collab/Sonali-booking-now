@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonal Spa</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Manrope;background:#f7f5f1}
+.box{max-width:480px;margin:0 auto;background:#fff;min-height:100vh}
+.card{margin:16px;border:1px solid #eee;border-radius:24px;padding:20px}
+.input{width:100%;padding:14px;border:1px solid #ddd;border-radius:14px;background:#fdfbf8}
+.chip{border:1.5px solid #ddd;border-radius:14px;padding:13px;text-align:center;font-weight:800;cursor:pointer}
+.chip.active{background:#111;color:#fff}
+.pay{flex:1;padding:12px;border-radius:14px;text-align:center;font-weight:800;cursor:pointer;border:1.5px solid #eee}
+.pay.active{background:#111;color:#fff}
+.idBox{display:none;background:#111;color:#fff;border-radius:20px;padding:18px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="box">
+<div style="padding:20px;display:flex;justify-content:space-between;border-bottom:1px solid #eee"><b>SONAL SPA</b><a href="https://telegram.me/Sonal_0101" style="background:#111;color:#fff;padding:6px 12px;border-radius:20px;font-size:10px;text-decoration:none">Sonal_0101</a></div>
+
+<div class="card">
+<input id="name" class="input" placeholder="Full Name" style="margin-bottom:8px">
+<input id="mob" class="input" placeholder="Mobile" style="margin-bottom:8px">
+<input id="hotel" class="input" placeholder="Hotel / Location">
+</div>
+
+<div class="card">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div class="chip active" onclick="setHour(this,'1 Hour',2000)">1H ₹2000</div>
+<div class="chip" onclick="setHour(this,'2 Hour',3000)">2H ₹3000</div>
+<div class="chip" onclick="setHour(this,'3 Hour',4000)">3H ₹4000</div>
+<div class="chip" onclick="setHour(this,'Full Night',6000)">Full Night ₹6000</div>
+</div>
+</div>
+
+<div class="card">
+<div style="display:flex;gap:8px"><input id="fromTime" type="time" class="input" value="21:00"><span>TO</span><input id="toTime" type="time" class="input" value="22:00"></div>
+<div style="display:flex;gap:8px;margin-top:10px"><div class="chip active" style="flex:1" onclick="setPerson(this,1)">1 Person</div><div class="chip" style="flex:1" onclick="setPerson(this,2)">2 Person Double</div></div>
+</div>
+
+<div class="card">
+<div style="display:flex;justify-content:space-between;background:#111;color:#fff;border-radius:16px;padding:14px"><div><div style="font-size:9px;color:#888">TOTAL</div><div id="total">₹2000</div></div><div style="text-align:right"><div style="font-size:9px;color:#D6FF7F">ADVANCE</div><div id="adv" style="color:#D6FF7F">₹399</div></div></div>
+<div style="display:flex;gap:8px;margin-top:10px"><div id="pPhonepe" class="pay active" onclick="setPay('phonepe')">PhonePe</div><div id="pPaytm" class="pay" onclick="setPay('paytm')">Paytm</div><div id="pGpay" class="pay" onclick="setPay('gpay')">GPay</div></div>
+<div style="border:1.5px dashed #ddd;border-radius:20px;padding:16px;text-align:center;margin-top:12px">
+<div id="payAmt" style="font-size:32px;font-weight:800">₹399</div>
+<div style="background:#111;color:#fff;border-radius:12px;padding:8px;margin:8px 0">UPI: <b id="upiText">sonali-5411@ptyes</b> <button onclick="copyUpi()" style="background:#fff;color:#111;border:none;padding:4px 10px;border-radius:20px;font-weight:800">COPY</button></div>
+<img id="qrImg" src="" style="width:180px;height:180px;margin:10px auto;display:block">
+<button id="directBtn" onclick="payNow()" style="width:100%;padding:14px;background:#C8A87D;border:none;border-radius:12px;font-weight:800">Direct Pay</button>
+</div>
+</div>
+
+<div class="card">
+<input type="file" id="ss" class="input" accept="image/*" onchange="showIdAuto()">
+<button onclick="confirmBooking()" style="width:100%;padding:16px;background:#111;color:#fff;border:none;border-radius:14px;font-weight:800;margin-top:10px">UPLOAD SCREENSHOT</button>
+<div id="idBox" class="idBox">
+<div style="font-size:10px;color:#C8A87D">BOOKING ID AUTO</div>
+<div id="bId" style="font-size:26px;font-weight:800;color:#D6FF7F">SONAL00000</div>
+<div id="wTime" style="font-size:12px;margin:8px 0">Time</div>
+<div style="background:#1a1a1a;padding:10px;border-radius:12px">Telegram: Sonal_0101<br>https://telegram.me/Sonal_0101</div>
+<a href="https://telegram.me/Sonal_0101" target="_blank" style="display:block;background:#229ED9;color:#fff;padding:12px;border-radius:12px;text-align:center;text-decoration:none;font-weight:800;margin-top:10px">📲 Telegram Pe Message Karo</a>
+</div>
+</div>
+</div>
+
+<script>
+const UPI_ID="sonali-5411@ptyes";let H='1 Hour',P=1,PRICE=2000,PAY='phonepe',BOOK_ID='';
+function setHour(e,h,p){[...e.parentElement.children].forEach(c=>c.classList.remove('active'));e.classList.add('active');H=h;PRICE=p;calc();}
+function setPerson(e,n){[...e.parentElement.children].forEach(c=>c.classList.remove('active'));e.classList.add('active');P=n;calc();}
+function setPay(a){PAY=a;document.querySelectorAll('.pay').forEach(c=>c.classList.remove('active'));document.getElementById('p'+(a==='phonepe'?'Phonepe':a.charAt(0).toUpperCase()+a.slice(1))).classList.add('active');calc();}
+function calc(){let adv=399*P;total.innerText='₹'+(PRICE*P);adv.innerText='₹'+adv;payAmt.innerText='₹'+adv;let url=`upi://pay?pa=${UPI_ID}&am=${adv}&cu=INR`;qrImg.src=`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(url)}`;directBtn.innerText=PAY+' Me ₹'+adv+' Direct Pay';}
+function copyUpi(){navigator.clipboard.writeText(UPI_ID).then(()=>alert('Copied '+UPI_ID));}
+function payNow(){window.location.href=`upi://pay?pa=${UPI_ID}&am=${399*P}&cu=INR`;}
+function showIdAuto(){if(!ss.files[0])return;BOOK_ID='SONAL'+Date.now().toString().slice(-5);bId.innerText=BOOK_ID;wTime.innerText=fromTime.value+' to '+toTime.value+' ('+H+')';idBox.style.display='block';}
+function confirmBooking(){if(!name.value.trim()){alert('Name dalo');return;}showIdAuto();let all=JSON.parse(localStorage.getItem('sonal_bookings')||'[]');all.unshift({id:BOOK_ID,name:name.value,mobile:mob.value,from:fromTime.value,to:toTime.value,hour:H,person:P,advance:399*P});localStorage.setItem('sonal_bookings',JSON.stringify(all));alert('Booking confirm - ID: '+BOOK_ID+'\nTelegram: https://telegram.me/Sonal_0101 pe bhejo');}
+calc();
+</script>
+</body>
+  </html>
