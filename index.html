@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riya Spa - Final</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@600;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter;background:#0a0a0a}
+.main{max-width:430px;margin:auto;background:#fff;min-height:100vh}
+.top{background:#111;color:#fff;padding:22px;text-align:center;border-radius:0 0 20px 20px}
+.top h1{font-family:Playfair Display;letter-spacing:6px;font-size:26px}
+.step{background:#D9FF66;color:#111;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block;margin:18px 0 10px}
+.opt{border:1.5px solid #eee;background:#f9f9f9;padding:14px;border-radius:14px;text-align:center;font-weight:800;cursor:pointer}
+.opt.active{background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.input{width:100%;padding:13px;border-radius:12px;border:1.5px solid #eee;background:#f8f8f8}
+.box{background:#111;color:#fff;border-radius:18px;padding:16px;display:flex;justify-content:space-between}
+.book{width:100%;background:#D9FF66;border:none;padding:16px;border-radius:14px;font-weight:900;margin-top:12px}
+.hotel{width:100%;height:200px;object-fit:cover;border-radius:16px}
+.pay-btn{padding:12px;border-radius:14px;text-align:center;font-weight:900;font-size:12px}
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><h1>RIYA SPA</h1><p style="font-size:9px;color:#777;letter-spacing:3px">FIVE STAR PREMIUM</p></div>
+<div style="padding:16px">
+
+<div class="step">STEP 1 : YOUR DETAILS - FIRST</div>
+<div style="display:flex;gap:8px"><input id="name" class="input" placeholder="Your Name"><input id="mob" class="input" placeholder="Mobile"></div>
+<!-- RANDOM SPA PHOTOS STEP 1 -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+<img class="hotel" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400">
+<img class="hotel" src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400">
+</div>
+
+<div class="step">STEP 2 : SELECT PLAN - Full Night 6000</div>
+<div class="grid">
+<div class="opt active" onclick="sS(this,'1 Hour')">1 Hour<br>₹2000</div>
+<div class="opt" onclick="sS(this,'2 Hour')">2 Hour<br>₹3000</div>
+<div class="opt" onclick="sS(this,'3 Hour')">3 Hour<br>₹4000</div>
+<div class="opt" onclick="sS(this,'Full Night')">Full Night<br>₹6000</div>
+</div>
+<!-- RANDOM SPA ROOM PHOTOS -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+<img class="hotel" src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400">
+<img class="hotel" src="https://images.unsplash.com/photo-1566669437688-88b33e1356ea?w=400">
+<img class="hotel" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400" style="grid-column:span 2;height:220px">
+</div>
+
+<div class="step">STEP 3 : PERSON - AUTO DOUBLE</div>
+<div class="grid"><div class="opt active" onclick="sP(this,1)">1 Person</div><div class="opt" onclick="sP(this,2)">2 Person - Double</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+<img class="hotel" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400">
+<img class="hotel" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400">
+</div>
+
+<div class="step">STEP 4 : PRICE - Pehle Jaisa</div>
+<div class="box"><div><div style="font-size:9px;color:#aaa">TOTAL</div><h2 id="total">₹2000</h2><div id="brk" style="font-size:10px;color:#888">1 Hour x 1</div></div><div style="text-align:right"><div style="font-size:9px;color:#aaa">ADVANCE</div><h2 id="adv" style="color:#D9FF66">₹300</h2><div id="ptag" style="font-size:10px;color:#D9FF66">1 PERSON</div></div></div>
+
+<div class="step">STEP 5 : BOOK & PAY</div>
+<!-- COLORFUL PAYMENT -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px">
+<div class="pay-btn" style="background:#5f259f;color:#fff">PhonePe</div>
+<div class="pay-btn" style="background:#00baf2;color:#fff">Paytm</div>
+<div class="pay-btn" style="background:#fff;border:2px solid #eee">GPay</div>
+</div>
+
+<div style="background:#f9f9f9;border:2px dashed #ddd;border-radius:16px;padding:14px;text-align:center">
+<div id="payAmt" style="font-size:32px;font-weight:900">₹300</div>
+<div id="payTag" style="background:#111;color:#D9FF66;padding:5px 12px;border-radius:20px;font-size:11px;display:inline-block">Advance</div>
+<div style="margin-top:8px">UPI: <b>riya@upi</b></div>
+<div style="width:180px;height:180px;background:#fff;border:1px solid #ddd;border-radius:12px;margin:10px auto;display:flex;align-items:center;justify-content:center;font-size:12px">QR CODE</div>
+<input type="file" class="input" style="margin-top:8px">
+</div>
+<button class="book" onclick="alert('Pay ₹'+(300*P)+' - Upload Screenshot')">BOOK NOW - PAY <span id="bamt">₹300</span></button>
+
+<!-- RANDOM LUXURY SPA HOTEL PHOTOS LAST -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px">
+<img class="hotel" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400">
+<img class="hotel" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=400">
+<img class="hotel" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400" style="grid-column:span 2;height:230px">
+</div>
+
+<p style="text-align:center;font-size:9px;color:#aaa;margin:16px 0;letter-spacing:2px">FIVE STAR SPA HOTEL ROOMS - UDAIPUR</p>
+
+</div>
+</div>
+<script>
+let S='1 Hour',P=1,prices={"1 Hour":2000,"2 Hour":3000,"3 Hour":4000,"Full Night":6000};
+function sS(e,s){for(let x of e.parentElement.children)x.classList.remove('active');e.classList.add('active');S=s;upd();}
+function sP(e,n){for(let x of e.parentElement.children)x.classList.remove('active');e.classList.add('active');P=n;upd();}
+function upd(){let t=prices[S]*P;let a=300*P;document.getElementById('total').innerText='₹'+t;document.getElementById('adv').innerText='₹'+a;document.getElementById('bamt').innerText='₹'+a;document.getElementById('payAmt').innerText='₹'+a;document.getElementById('brk').innerText=S+' x '+P;document.getElementById('ptag').innerText=P==2?'2 PERSON DOUBLE':'1 PERSON';document.getElementById('payTag').innerText=P==2?'2 Person Double ₹'+a:'1 Person ₹'+a;}
+upd();
+</script>
+</body>
+  </html>
