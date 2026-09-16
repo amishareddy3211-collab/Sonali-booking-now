@@ -1,0 +1,9 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Sonali Booking</title><style>body{font-family:sans-serif;padding:20px;background:#111;color:#fff}input,button{padding:10px;margin:5px;width:90%}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{border:1px solid #555;padding:8px;text-align:left}th{background:#e91e63}</style></head><body>
+<h2>Sonali Booking - Admin Login</h2>
+<div id="login"><input type="password" id="pass" placeholder="Password dalo (sonali123)"><button onclick="login()">Login</button></div>
+<div id="data" style="display:none"><h3>All Bookings</h3><table id="tbl"><tr><th>Name</th><th>Phone</th><th>Service</th><th>Date</th></tr></table><button onclick="clearData()">Clear All</button></div>
+<script>
+function login(){if(document.getElementById('pass').value==='sonali123'){document.getElementById('login').style.display='none';document.getElementById('data').style.display='block';load();}else alert('Galat password');}
+function load(){let b=JSON.parse(localStorage.getItem('sonaliBookings')||'[]');let t=document.getElementById('tbl');b.forEach(x=>{t.innerHTML+=`<tr><td>${x.name}</td><td>${x.phone}</td><td>${x.service}</td><td>${x.date}</td></tr>`});}
+function clearData(){if(confirm('Delete all?')){localStorage.removeItem('sonaliBookings');location.reload();}}
+</script></body></html>
