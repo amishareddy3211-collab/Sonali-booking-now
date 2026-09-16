@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - QR & Timing Control</title>
+<style>body{font-family:sans-serif;background:#f2f0ec;margin:0}.box{max-width:500px;margin:0 auto;background:#fff;min-height:100vh}.top{background:#111;color:#fff;padding:16px}.card{margin:12px;border:1px solid #eee;border-radius:14px;padding:14px}.in{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin:5px 0;box-sizing:border-box}.btn{width:100%;padding:14px;background:#111;color:#fff;border:none;border-radius:10px;font-weight:800;margin-top:8px;cursor:pointer}.lab{font-size:10px;color:#999;letter-spacing:1px;font-weight:800;margin-top:8px;display:block}</style>
+</head>
+<body>
+<div class="box">
+<div class="top"><b>ADMIN - QR & TIMING CONTROL</b><div style="font-size:11px;color:#D6FF7F">http://t.me/Riya_31bot - Connected</div></div>
+
+<div class="card">
+<b>🤖 Bot Settings</b>
+<span class="lab">BOT TOKEN</span><input id="botToken" class="in" value="8832111538:AAE1NfD-o9k7iQlKGm7nHmNm5O4VuOLf6ag">
+<span class="lab">CHAT ID - Auto</span><input id="chatId" class="in" placeholder="Get ID dabao">
+<button onclick="getId()" style="width:48%;padding:12px;background:#229ED9;color:#fff;border:none;border-radius:10px;font-weight:800">🔍 Get Chat ID</button>
+<button onclick="save()" style="width:48%;padding:12px;background:#111;color:#fff;border:none;border-radius:10px;font-weight:800">SAVE</button>
+<div id="status" style="font-size:11px;margin-top:8px;background:#f5f5f5;padding:8px;border-radius:8px">Ready</div>
+</div>
+
+<div class="card">
+<b>💳 QR CODE UPDATE - Yahan se QR badlega</b>
+<span class="lab">UPI ID - QR Isi se banega</span><input id="upi" class="in" value="sonali-5411@ptyes">
+<span class="lab">Advance Amount Per Person (₹)</span><input id="adv" class="in" value="399" type="number">
+<span class="lab">Telegram Link</span><input id="tele" class="in" value="http://t.me/Riya_31bot">
+<div style="text-align:center;margin:10px 0">
+<div style="font-size:10px;color:#999">Live QR Preview</div>
+<img id="qrPre" style="width:150px;height:150px;border:1px solid #eee;border-radius:10px;margin-top:6px">
+<div id="qrAmt" style="font-weight:800;margin-top:4px"></div>
+</div>
+<button class="btn" onclick="save()">💾 QR Update Karo - Site pe Live Hoga</button>
+</div>
+
+<div class="card">
+<b>⏰ TIMING UPDATE - Yahan se Timing badlega</b>
+<span class="lab">Default From Time</span><input id="fromTime" type="time" class="in" value="21:00">
+<span class="lab">Default To Time</span><input id="toTime" type="time" class="in" value="22:00">
+<span class="lab">Waiting Time Message (Step 6 pe dikhega)</span><input id="waitMsg" class="in" value="15 MINUTE">
+<span class="lab">Waiting Detail Message</span><input id="waitDetail" class="in" value="15 minute ke andar ladki location pe aayegi">
+<button class="btn" onclick="save()">⏰ Timing Update Karo</button>
+</div>
+
+<div class="card"><b>📋 Live Bookings</b><div id="list" style="margin-top:10px"></div></div>
+</div>
